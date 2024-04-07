@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BG_URL } from "../utils/constants";
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
@@ -57,22 +58,23 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <div className="absolute">
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
+            <div>
+                <img className="absolute bg-slate-500 h-screen object-cover w-full "
+                src={BG_URL}
                     alt="bg-Img" />
             </div>
             <form
                 onSubmit={(e) => e.preventDefault()}
-                className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-90">
+                className="absolute bg-black md:py-4 py-16 px-5 m-32 md:w-[440px] mx-auto  right-0 left-0 text-white text-center rounded-md bg-opacity-80 w-[400px]">
                 <h1 className="text-bold text-3xl py-4">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
                 {!isSignInForm && (
-                    <input type="text" placeholder="Full Name" className="p-2 my-4 w-full bg-gray-700 border-gray-300 rounded-sm" />)}
-                <input ref={email} type="text" placeholder="Email Address" className="p-2 my-4 w-full bg-gray-700 border-gray-300 rounded-sm" />
-                <input ref={password} type="password" placeholder="Password" className="p-2 my-4 w-full bg-gray-700 rounded-sm" />
+                    <input type="text" placeholder="Full Name" className="p-3 px-5 my-4  w-full rounded-md bg-[#333333] text-gray-400'" />)}
+                <input ref={email} type="text" placeholder="Email Address" className="p-3 px-5 my-3 w-full rounded-md bg-[#333333] text-gray-400" />
+                <input ref={password} type="password" placeholder="Password" className="p-3 px-5 my-4  w-full rounded-md bg-[#333333] text-gray-400" />
                 <p className="text-red-500 font-bold py-2">{errorMessage}</p>
-                <button className="p-4 my-4 bg-red-700 w-full rounded-lg"
+                <button className="py-4 my-6 bg-red-700 w-full rounded-lg"
                     onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
-                <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix? Sign up now." : "Already Regisered? Sign in now."}</p>
+                <p className="cursor-pointer text-slate-400" onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix? Sign up now." : "Already Regisered? Sign in now."}</p>
             </form>
         </div>
     )
