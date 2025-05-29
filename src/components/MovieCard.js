@@ -30,7 +30,7 @@ const MovieCard = ({posterPath, id}) => {
     return (
       <div
        
-        className=" w-40 pr-5 md:w-60 md:pr-6 movie-card"
+        className=" w-40 pr-5 md:w-60 md:pr-5 movie-card"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
